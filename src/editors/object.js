@@ -817,7 +817,10 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
     $each(value, function(i,val) {
       if(!self.cached_editors[i]) {
         self.addObjectProperty(i);
-        if(self.editors[i]) self.editors[i].setValue(val,initial);
+        if(self.editors[i]) {
+          self.editors[i].options.hidden=true;
+          self.editors[i].setValue(val,initial);
+        }
       }
     });
     
